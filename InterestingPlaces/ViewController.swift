@@ -16,6 +16,7 @@ class ViewController: UIViewController {
       placesViewController = childViewController
     }
     loadPlaces()
+    
     locationManager = CLLocationManager()
     locationManager?.delegate = self
     locationManager?.desiredAccuracy = kCLLocationAccuracyHundredMeters
@@ -23,15 +24,11 @@ class ViewController: UIViewController {
     
   }
 
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
-  }
-  
   func selectPlace() {
     print("place selected")
   }
   
+    // check the status of
   @IBAction func startLocationService(_ sender: UIButton) {
     if CLLocationManager.authorizationStatus() == .authorizedAlways || CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
       
@@ -85,6 +82,7 @@ extension ViewController: CLLocationManagerDelegate {
     }
   }
   
+    // after activation app starts receiving locations
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     
     if previousLocation == nil {
