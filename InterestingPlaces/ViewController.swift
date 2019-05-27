@@ -112,6 +112,15 @@ class ViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "MapSegue" {
+            guard let mapController = segue.destination as? MapViewController,
+                let selectedPlace = selectedPlace else { return }
+            mapController.place = selectedPlace
+            
+        }
+    }
+    
     private func updateUI() {
         placeName.text = selectedPlace?.name
         guard let imageName = selectedPlace?.imageName,
