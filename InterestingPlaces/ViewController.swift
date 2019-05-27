@@ -9,7 +9,7 @@ class ViewController: UIViewController {
     var placesViewController: PlaceScrollViewController?
     
     var locationManager: CLLocationManager?
-    var previousLocation: CLLocation?
+    var currentLocation: CLLocation?
     
     var places: [Place] = []
     var selectedPlace: Place? = nil
@@ -91,6 +91,12 @@ class ViewController: UIViewController {
         guard let imageName = selectedPlace?.imageName,
             let image = UIImage(named: imageName) else { return }
         placeImage.image = image
+        
+        guard let currentLocation = currentLocation,
+            let distanceInMeters = selectedPlace?.location.distance(from: currentLocation) else { return }
+        let distance = Measurement(value: distanceInMeters, unit: UnitLength.meters)
+        let miles = distance.converted(to: UnitLength.miles)
+        locationDistance.text = "\(miles) miles"
     }
 }
 
@@ -106,14 +112,9 @@ extension ViewController: CLLocationManagerDelegate {
     // after activation app starts receiving locations
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        if previousLocation == nil {
-            previousLocation = locations.first
-        } else {
-            guard let latest = locations.first else { return }
-            let distanceInMeters = previousLocation?.distance(from: latest) ?? 0
-            print("distance in meters: \(distanceInMeters)")
-            previousLocation = latest
-        }
+        currentLocation = locations.first
+        updateUI()
+        
     }
 }
 
