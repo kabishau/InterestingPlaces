@@ -8,6 +8,59 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Map View Controller-->
+        <scene sceneID="dO6-3w-gQl">
+            <objects>
+                <viewController id="pye-6T-EPQ" customClass="MapViewController" customModule="InterestingPlaces" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pcB-kE-aQC"/>
+                        <viewControllerLayoutGuide type="bottom" id="TjT-5u-FOq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nvl-Ev-Fb2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ol4-OL-XIG">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C4F-C5-cLL">
+                                <rect key="frame" x="20" y="686" width="39" height="30"/>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="closeMap:" destination="pye-6T-EPQ" eventType="touchUpInside" id="wUN-Rs-7Xl"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="icc-EV-L8m">
+                                <rect key="frame" x="136.66666666666666" y="688" width="140.99999999999997" height="29"/>
+                                <segments>
+                                    <segment title="Standard"/>
+                                    <segment title="Satellite"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeMapType:" destination="pye-6T-EPQ" eventType="valueChanged" id="aAm-bh-ZzH"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ol4-OL-XIG" firstAttribute="top" secondItem="nvl-Ev-Fb2" secondAttribute="top" id="27r-ab-MPR"/>
+                            <constraint firstItem="TjT-5u-FOq" firstAttribute="top" secondItem="icc-EV-L8m" secondAttribute="bottom" constant="20" id="BK3-bJ-f6V"/>
+                            <constraint firstItem="TjT-5u-FOq" firstAttribute="top" secondItem="Ol4-OL-XIG" secondAttribute="bottom" id="Idd-OV-gKn"/>
+                            <constraint firstAttribute="trailing" secondItem="Ol4-OL-XIG" secondAttribute="trailing" id="Kge-2f-pLe"/>
+                            <constraint firstItem="C4F-C5-cLL" firstAttribute="leading" secondItem="nvl-Ev-Fb2" secondAttribute="leadingMargin" id="OyF-mW-YhO"/>
+                            <constraint firstItem="icc-EV-L8m" firstAttribute="centerX" secondItem="nvl-Ev-Fb2" secondAttribute="centerX" id="Vkw-9g-Upm"/>
+                            <constraint firstItem="TjT-5u-FOq" firstAttribute="top" secondItem="C4F-C5-cLL" secondAttribute="bottom" constant="20" id="edb-yK-4Xj"/>
+                            <constraint firstItem="Ol4-OL-XIG" firstAttribute="leading" secondItem="nvl-Ev-Fb2" secondAttribute="leading" id="gWr-lT-5Zr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="Ol4-OL-XIG" id="R2v-jn-UXg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j0g-GH-22S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="523.1884057971015" y="290.21739130434787"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -25,7 +78,7 @@
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <stackView opaque="NO" tag="2" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="8Ua-Ch-VNK">
-                                <rect key="frame" x="108.66666666666667" y="376" width="196.66666666666663" height="73"/>
+                                <rect key="frame" x="108.66666666666667" y="376" width="196.66666666666663" height="109"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0aS-2A-efF">
                                         <rect key="frame" x="75.999999999999986" y="0.0" width="44.666666666666671" height="20.333333333333332"/>
@@ -39,8 +92,15 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="udT-87-aaf">
+                                        <rect key="frame" x="53.999999999999986" y="52.666666666666686" width="89.000000000000014" height="30"/>
+                                        <state key="normal" title="View on Map"/>
+                                        <connections>
+                                            <segue destination="pye-6T-EPQ" kind="modal" identifier="MapSegue" id="IRD-2f-HCQ"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current location unknown" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Npl-lN-170">
-                                        <rect key="frame" x="0.0" y="52.666666666666686" width="196.66666666666666" height="20.333333333333329"/>
+                                        <rect key="frame" x="0.0" y="88.666666666666686" width="196.66666666666666" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -48,7 +108,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3T7-TL-Z3g">
-                                <rect key="frame" x="194.66666666666666" y="466" width="25" height="25"/>
+                                <rect key="frame" x="194.66666666666666" y="502" width="25" height="25"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gy-w6-Em1">
                                         <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
