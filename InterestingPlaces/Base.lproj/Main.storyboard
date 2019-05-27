@@ -25,7 +25,7 @@
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <stackView opaque="NO" tag="2" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="8Ua-Ch-VNK">
-                                <rect key="frame" x="108.66666666666667" y="376" width="196.66666666666663" height="46.666666666666686"/>
+                                <rect key="frame" x="108.66666666666667" y="376" width="196.66666666666663" height="73"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0aS-2A-efF">
                                         <rect key="frame" x="75.999999999999986" y="0.0" width="44.666666666666671" height="20.333333333333332"/>
@@ -33,8 +33,14 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yiV-Jr-5fw">
+                                        <rect key="frame" x="66.999999999999986" y="26.333333333333314" width="63.000000000000014" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current location unknown" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Npl-lN-170">
-                                        <rect key="frame" x="0.0" y="26.333333333333314" width="196.66666666666666" height="20.333333333333329"/>
+                                        <rect key="frame" x="0.0" y="52.666666666666686" width="196.66666666666666" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -42,7 +48,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3T7-TL-Z3g">
-                                <rect key="frame" x="194.66666666666666" y="439.66666666666669" width="25" height="25"/>
+                                <rect key="frame" x="194.66666666666666" y="466" width="25" height="25"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gy-w6-Em1">
                                         <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
@@ -92,6 +98,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addressLabel" destination="yiV-Jr-5fw" id="uYz-Fy-QdE"/>
                         <outlet property="locationDistance" destination="Npl-lN-170" id="yCu-8c-xOq"/>
                         <outlet property="placeImage" destination="Mqz-Dc-yPy" id="cvk-Ak-4r6"/>
                         <outlet property="placeName" destination="0aS-2A-efF" id="exL-a9-R6C"/>
