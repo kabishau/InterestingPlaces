@@ -92,8 +92,9 @@ class ViewController: UIViewController {
         }
         return placedEntries
     }
+
     
-    private func printAddress() {
+    private func printAddressLabel() {
         guard let selectedPlace = selectedPlace else { return }
         geocoder.reverseGeocodeLocation(selectedPlace.location) { [weak self] (placemarks, error) in
             if let error = error {
@@ -123,7 +124,7 @@ class ViewController: UIViewController {
         let miles = distance.converted(to: UnitLength.miles)
         locationDistance.text = "\(miles) miles"
         
-        printAddress()
+        printAddressLabel()
     }
 }
 
