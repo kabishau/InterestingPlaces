@@ -26,6 +26,7 @@ class ViewController: UIViewController {
         locationManager = CLLocationManager()
         locationManager?.delegate = self
         locationManager?.desiredAccuracy = kCLLocationAccuracyHundredMeters // default - best accuracy
+        locationManager?.allowsBackgroundLocationUpdates = true
         
         selectedPlace = places.first
         updateUI()
@@ -46,12 +47,14 @@ class ViewController: UIViewController {
             activateLocationServices()
             
         } else {
-            locationManager?.requestWhenInUseAuthorization()
+            //locationManager?.requestWhenInUseAuthorization()
+            locationManager?.requestAlwaysAuthorization()
         }
     }
     
     private func activateLocationServices() {
-        locationManager?.startUpdatingLocation()
+        //locationManager?.startUpdatingLocation()
+        locationManager?.requestLocation() // + delegation method for error handling
     }
     
     func loadPlaces() {
@@ -114,7 +117,11 @@ extension ViewController: CLLocationManagerDelegate {
         
         currentLocation = locations.first
         updateUI()
-        
+    }
+    
+    // optinal but required when working with requestLocation method
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error.localizedDescription)
     }
 }
 
